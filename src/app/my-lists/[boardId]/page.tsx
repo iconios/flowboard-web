@@ -15,7 +15,7 @@ const Page = async ({
   searchParams,
 }: {
   params: Promise<{ boardId: string }>;
-  searchParams: ListPageSearchParamsType;
+  searchParams: Promise<ListPageSearchParamsType>;
 }) => {
   const { boardId } = await params;
 
