@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/await-thenable */
+ 
 /*
 #Plan:
 0. Declare the variables and constants
