@@ -162,7 +162,9 @@ const InAppHeader = ({
                   },
                 }}
               >
-                <MenuItem sx={{ p: 0 }} LinkComponent={Link} href="/my-boards">
+                <MenuItem sx={{ p: 0 }} LinkComponent={Link} href="/my-boards" onClick={() => {
+                  router.push("/my-boards");
+                }}>
                   <Button
                     sx={{
                       bgcolor: "primary.main",
@@ -189,6 +191,7 @@ const InAppHeader = ({
                       ":hover": { bgcolor: "primary.dark" },
                       m: 0,
                       width: "100%",
+                      py: 1.5,
                     }}
                   >
                     {authButtonText}

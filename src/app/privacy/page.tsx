@@ -48,7 +48,7 @@ const PrivacyPage = () => {
           title="WebView"
           src="https://nerdywebconsults.ng/privacy"
           height="100%"
-          style={{ border: 0, height: "100vh" }}
+          style={{ border: 0, height: "100vh", paddingBottom: 50 }}
           onLoad={handleLoad}
           onError={handleError}
           width="100%"

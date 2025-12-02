@@ -108,6 +108,9 @@ const NavBar = () => {
                 }}
               >
                 <MenuItem
+                onClick={() => {
+                  router.push("/my-boards");
+                }}
                   sx={{ p: 0, display: user.id ? "block" : "none" }}
                   LinkComponent={Link}
                   href="/my-boards"
