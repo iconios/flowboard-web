@@ -162,7 +162,7 @@ const InAppHeader = ({
                   },
                 }}
               >
-                <MenuItem sx={{ p: 0 }} LinkComponent={Link} href="/my-boards" onClick={() => {
+                <MenuItem sx={{ p: 0, display: showUserDetails ? "block" : "none" }} LinkComponent={Link} href="/my-boards" onClick={() => {
                   router.push("/my-boards");
                 }}>
                   <Button
@@ -216,6 +216,7 @@ const InAppHeader = ({
                   py: 1.5,
                   px: 3,
                   width: "100%",
+                  display: showUserDetails ? "block" : "none"
                 }}
               >
                 Boards
