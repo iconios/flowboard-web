@@ -114,6 +114,7 @@ const LoginTabPanel = () => {
         borderRadius: 5,
         px: 1,
         py: 2,
+        mb: 8
       }}
     >
       {notification && (
@@ -210,7 +211,7 @@ const LoginTabPanel = () => {
           color="primary"
           variant="contained"
           fullWidth
-          sx={{ mt: 2, py: 1 }}
+          sx={{ mt: 2, py: 1.5 }}
         >
           Sign In
         </Button>

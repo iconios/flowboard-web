@@ -108,6 +108,7 @@ const RegisterTabPanel = () => {
         borderRadius: 5,
         px: 1,
         py: 2,
+        mb: 16
       }}
     >
       {notification && (
@@ -261,6 +262,7 @@ const RegisterTabPanel = () => {
             typography: {
               sx: {
                 ...theme.typography.body2,
+                fontSize: 14
               },
             },
           }}
@@ -272,7 +274,7 @@ const RegisterTabPanel = () => {
           color="primary"
           variant="contained"
           fullWidth
-          sx={{ mt: 2, py: 1 }}
+          sx={{ mt: 2, py: 1.5 }}
           disabled={!checked}
         >
           Sign Up
