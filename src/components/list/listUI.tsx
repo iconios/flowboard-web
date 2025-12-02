@@ -96,7 +96,9 @@ const ListUI = ({ list, bgColor }: { list: ListType; bgColor: string }) => {
             }}
           >
             <IconButton
-              onClick={() => { setOpenEditDialog(true); }}
+              onClick={() => {
+                setOpenEditDialog(true);
+              }}
               sx={{ color: bgColor }}
             >
               <Edit />
@@ -111,7 +113,9 @@ const ListUI = ({ list, bgColor }: { list: ListType; bgColor: string }) => {
               onClose={handleCloseEditDialog}
             />
             <IconButton
-              onClick={() => { setOpenDeleteDialog(true); }}
+              onClick={() => {
+                setOpenDeleteDialog(true);
+              }}
               sx={{ color: bgColor }}
             >
               <Delete />

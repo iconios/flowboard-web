@@ -33,5 +33,5 @@ export default defineConfig(
       ...tseslint.configs.strictTypeChecked[1].rules,
       ...tseslint.configs.stylisticTypeChecked[0].rules,
     },
-  }
+  },
 );

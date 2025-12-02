@@ -93,7 +93,9 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
     mutationKey: ["task"],
     mutationFn: (values: UpdateTaskInputType) => UpdateTaskServerAction(values),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["task", `task:${listId}`] });
+      await queryClient.invalidateQueries({
+        queryKey: ["task", `task:${listId}`],
+      });
       setNotification({
         message: "Task updated successfully",
         messageType: "success",
@@ -223,7 +225,9 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
                 <Button
                   size="small"
                   startIcon={<Close />}
-                  onClick={() => { resetField("title"); }}
+                  onClick={() => {
+                    resetField("title");
+                  }}
                   color="inherit"
                 >
                   Cancel
@@ -279,7 +283,9 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
                 <Button
                   size="small"
                   startIcon={<Close />}
-                  onClick={() => { resetField("description"); }}
+                  onClick={() => {
+                    resetField("description");
+                  }}
                   color="inherit"
                 >
                   Cancel
@@ -334,7 +340,9 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
                 <Button
                   size="small"
                   startIcon={<Close />}
-                  onClick={() => { resetField("dueDate"); }}
+                  onClick={() => {
+                    resetField("dueDate");
+                  }}
                   color="inherit"
                 >
                   Cancel
@@ -402,7 +410,9 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
                 <Button
                   size="small"
                   startIcon={<Close />}
-                  onClick={() => { resetField("priority"); }}
+                  onClick={() => {
+                    resetField("priority");
+                  }}
                   color="inherit"
                 >
                   Cancel
@@ -452,7 +462,9 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
                 <Button
                   size="small"
                   startIcon={<Close />}
-                  onClick={() => { resetField("position"); }}
+                  onClick={() => {
+                    resetField("position");
+                  }}
                   color="inherit"
                 >
                   Cancel

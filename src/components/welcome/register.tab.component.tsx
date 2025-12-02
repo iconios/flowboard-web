@@ -251,7 +251,9 @@ const RegisterTabPanel = () => {
               checked={checked}
               required
               aria-label="Terms of service checkbox"
-              onChange={() => { setChecked(!checked); }}
+              onChange={() => {
+                setChecked(!checked);
+              }}
               sx={{ pt: 2 }}
             />
           }

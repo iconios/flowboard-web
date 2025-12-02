@@ -125,9 +125,9 @@ const DndBoardLists = ({
       handleTaskMoveOrReorder();
     });
     socket.on("task:move:error", handleError);
-    socket.on("task:reorder:success", (response) =>
-      { handleTaskReorderSuccess(response); },
-    );
+    socket.on("task:reorder:success", (response) => {
+      handleTaskReorderSuccess(response);
+    });
     socket.on("task:reorder:error", handleError);
     socket.on("list:reorder:error", handleError);
 
@@ -363,7 +363,9 @@ const DndBoardLists = ({
               <CustomSizeSwitch
                 switchSize="medium"
                 checked={showInvite}
-                onChange={() => { setShowInvite(!showInvite); }}
+                onChange={() => {
+                  setShowInvite(!showInvite);
+                }}
               />
               <Typography
                 variant="body2"

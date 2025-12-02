@@ -1,6 +1,14 @@
-"use client"
+"use client";
 
-import { useTheme, Box, CSSProperties, Grid, Link, Paper, Typography } from "@mui/material";
+import {
+  useTheme,
+  Box,
+  CSSProperties,
+  Grid,
+  Link,
+  Paper,
+  Typography,
+} from "@mui/material";
 
 const ContactPage = () => {
   const theme = useTheme();
@@ -41,7 +49,7 @@ const ContactPage = () => {
           sx={{ marginTop: 4, paddingX: 2, marginBottom: 4 }}
         >
           <Grid size={gridSize} sx={gridStyle}>
-            <Box sx={{ mb: 2}}>
+            <Box sx={{ mb: 2 }}>
               <svg
                 width="46"
                 height="46"
@@ -101,8 +109,19 @@ const ContactPage = () => {
             <Typography variant="body1" sx={contactTitleStyle}>
               Contact
             </Typography>
-            <Link href="tel:2348038399414" underline="hover" sx={{display: "inline-flex", alignItems: "center", textDecoration: "none", color: theme.palette.text.primary, ...theme.typography.body2, fontWeight: "200"}}>
-             Phone: +234 803 839 9414
+            <Link
+              href="tel:2348038399414"
+              underline="hover"
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                textDecoration: "none",
+                color: theme.palette.text.primary,
+                ...theme.typography.body2,
+                fontWeight: "200",
+              }}
+            >
+              Phone: +234 803 839 9414
             </Link>
             <Typography variant="body2" sx={{ fontWeight: "200" }}>
               Email: info@nerdywebconsults.ng

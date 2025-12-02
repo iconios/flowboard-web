@@ -1,4 +1,3 @@
- 
 /*
 #Plan:
 0. Declare the variables and constants

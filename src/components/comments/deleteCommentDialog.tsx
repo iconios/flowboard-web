@@ -68,7 +68,9 @@ const DeleteCommentDialog = ({
     try {
       console.log("Task Id:", taskId);
       await mutation.mutateAsync({ commentId, taskId });
-      setTimeout(() => { handleDialogClose(); }, 2000);
+      setTimeout(() => {
+        handleDialogClose();
+      }, 2000);
     } catch (error) {
       console.error("Error deleting comment", error);
     }

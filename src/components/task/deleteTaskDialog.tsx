@@ -44,7 +44,9 @@ const DeleteTaskDialog = ({
     mutationFn: (values: { listId: string; taskId: string }) =>
       DeleteTaskServerAction(values),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["list", `list:${boardId}`] });
+      await queryClient.invalidateQueries({
+        queryKey: ["list", `list:${boardId}`],
+      });
       setNotification({
         message: "Task deleted successfully",
         messageType: "success",

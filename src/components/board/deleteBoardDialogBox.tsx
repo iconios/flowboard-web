@@ -6,6 +6,7 @@
 import { DeleteBoardServerAction } from "@/actions/boards.server.action";
 import NotificationBar from "@/lib/notificationBar";
 import { DeleteBoardInputType, NotificationBarType } from "@/lib/types";
+import { Cancel, Delete } from "@mui/icons-material";
 import {
   Button,
   Dialog,
@@ -97,18 +98,31 @@ const DeleteBoardDialogBox = ({
             board?
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose} disabled={mutation.isPending}>
-            Cancel
-          </Button>
+        <DialogActions
+          sx={{
+            justifyContent: "space-between",
+            flexDirection: "row",
+            px: 3,
+            mb: 1,
+          }}
+        >
           <Button
             onClick={handleDelete}
-            color="error"
+            color="primary"
             variant="contained"
             autoFocus
             disabled={mutation.isPending}
+            startIcon={<Delete />}
           >
             {mutation.isPending ? "Deleting..." : "Delete"}
+          </Button>
+          <Button
+            onClick={handleDialogClose}
+            disabled={mutation.isPending}
+            endIcon={<Cancel />}
+            sx={{ border: "1px #FF6D00 solid", color: "#FF6D00" }}
+          >
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>

@@ -64,12 +64,16 @@ const InAppFooter = ({
         <BottomNavigationAction
           label="Boards"
           icon={<Dashboard />}
-          onClick={() => { handleNavigation(0, "/my-boards"); }}
+          onClick={() => {
+            handleNavigation(0, "/my-boards");
+          }}
         />
         <BottomNavigationAction
           label="Profile"
           icon={<AccountCircle />}
-          onClick={() => { handleNavigation(1, "/profile"); }}
+          onClick={() => {
+            handleNavigation(1, "/profile");
+          }}
         />
       </BottomNavigation>
     </Box>

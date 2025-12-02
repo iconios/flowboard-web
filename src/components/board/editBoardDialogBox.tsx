@@ -22,6 +22,7 @@ import { FormikHelpers, useFormik } from "formik";
 import { useMemo, useState } from "react";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Cancel, Edit } from "@mui/icons-material";
 
 const EditBoardDialogBox = ({
   dialogOpen,
@@ -119,7 +120,7 @@ const EditBoardDialogBox = ({
           Edit Board
         </DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ ...theme.typography.body2 }}>
+          <DialogContentText sx={{ ...theme.typography.body2, mb: 2 }}>
             Enter the board fields values
           </DialogContentText>
           <form onSubmit={formik.handleSubmit}>
@@ -131,6 +132,19 @@ const EditBoardDialogBox = ({
                 id="title"
                 name="title"
                 variant="outlined"
+                size="small"
+                slotProps={{
+                  inputLabel: {
+                    sx: {
+                      ...theme.typography.body2,
+                    },
+                  },
+                  input: {
+                    sx: {
+                      ...theme.typography.body2,
+                    },
+                  },
+                }}
                 value={formik.values.title}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -144,6 +158,20 @@ const EditBoardDialogBox = ({
                 id="bg_color"
                 name="bg_color"
                 variant="outlined"
+                size="small"
+                slotProps={{
+                  inputLabel: {
+                    sx: {
+                      ...theme.typography.body2,
+                    },
+                    shrink: true,
+                  },
+                  input: {
+                    sx: {
+                      ...theme.typography.body2,
+                    },
+                  },
+                }}
                 value={formik.values.bg_color}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -151,31 +179,35 @@ const EditBoardDialogBox = ({
                   formik.touched.bg_color && Boolean(formik.errors.bg_color)
                 }
                 helperText={formik.touched.bg_color && formik.errors.bg_color}
-                slotProps={{ inputLabel: { shrink: true } }}
               />
             </Stack>
 
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-              <DialogActions>
-                <Button
-                  type="submit"
-                  color="primary"
-                  variant="contained"
-                  sx={{ mt: 2 }}
-                  disabled={formik.isSubmitting || isPending || !formik.dirty}
-                >
-                  {formik.isSubmitting ? "Updating..." : "Edit"}
-                </Button>
-                <Button
-                  color="secondary"
-                  variant="outlined"
-                  sx={{ mt: 2 }}
-                  onClick={handleDialogClose}
-                >
-                  Cancel
-                </Button>
-              </DialogActions>
-            </Stack>
+            <DialogActions
+              sx={{
+                justifyContent: "space-between",
+                flexDirection: "row",
+                px: 3,
+                my: 1,
+              }}
+            >
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                disabled={formik.isSubmitting || isPending || !formik.dirty}
+                startIcon={<Edit />}
+              >
+                {formik.isSubmitting ? "Updating..." : "Edit"}
+              </Button>
+              <Button
+                endIcon={<Cancel />}
+                sx={{ border: "1px #FF6D00 solid", color: "#FF6D00" }}
+                onClick={handleDialogClose}
+                disabled={formik.isSubmitting || isPending}
+              >
+                Cancel
+              </Button>
+            </DialogActions>
           </form>
         </DialogContent>
       </Dialog>

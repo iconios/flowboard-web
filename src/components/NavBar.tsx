@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
+// The top navigation bar
 "use client";
 import {
   AppBar,
@@ -11,6 +12,7 @@ import {
   MenuItem,
   useTheme,
   useMediaQuery,
+  Stack,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
@@ -24,7 +26,7 @@ const NavBar = () => {
   const { user, LogOut } = useUserContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -99,12 +101,30 @@ const NavBar = () => {
                 slotProps={{
                   paper: {
                     sx: {
-                      mt: 1,
                       minWidth: 120,
+                      m: 0,
                     },
                   },
                 }}
               >
+                <MenuItem
+                  sx={{ p: 0, display: user.id ? "block" : "none" }}
+                  LinkComponent={Link}
+                  href="/my-boards"
+                >
+                  <Button
+                    sx={{
+                      bgcolor: "primary.main",
+                      color: "primary.contrastText",
+                      ":hover": { bgcolor: "primary.dark" },
+                      m: 0,
+                      width: "100%",
+                      py: 1.5,
+                    }}
+                  >
+                    Boards
+                  </Button>
+                </MenuItem>
                 <MenuItem
                   onClick={user.id ? handleLogout : handleLogin}
                   sx={{ p: 0 }}
@@ -118,6 +138,7 @@ const NavBar = () => {
                       ":hover": { bgcolor: "primary.dark" },
                       m: 0,
                       width: "100%",
+                      py: 1.5,
                     }}
                   >
                     {user.id ? "Logout" : "Login"}
@@ -127,10 +148,10 @@ const NavBar = () => {
             </Box>
           ) : (
             /* Desktop View */
-            <Box>
+            <Stack direction="row" spacing={2}>
               <Button
+              onClick={() => { router.push("/my-boards"); }}
                 variant="contained"
-                size="small"
                 sx={{
                   textTransform: "none",
                   fontWeight: 600,
@@ -139,12 +160,29 @@ const NavBar = () => {
                   fontSize: { sm: "0.9rem", md: "1rem" },
                   px: 3,
                   py: 1.5,
+                  width: "100%",
+                  display: user.id ? "block" : "none",
+                }}
+              >
+                Boards
+              </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  textTransform: "none",
+                  fontWeight: 600,
+                  bgcolor: "primary.main",
+                  ":hover": { bgcolor: "primary.dark" },
+                  fontSize: { sm: "0.9rem", md: "1rem" },
+                  px: 3,
+                  py: 1.5,
+                  width: "100%",
                 }}
                 onClick={user ? handleLogout : handleLogin}
               >
                 {user.id ? "Logout" : "Login"}
               </Button>
-            </Box>
+            </Stack>
           )}
         </Toolbar>
       </Container>

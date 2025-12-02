@@ -30,9 +30,7 @@ const LoginRegisterTabs = () => {
     if (
       event.type !== "click" ||
       (event.type === "click" &&
-        samePageLinkNavigation(
-          event as React.MouseEvent<HTMLAnchorElement>,
-        ))
+        samePageLinkNavigation(event as React.MouseEvent<HTMLAnchorElement>))
     ) {
       setValue(newValue);
     }

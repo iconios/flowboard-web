@@ -42,12 +42,7 @@ const Timelines = () => {
           <Box>
             <Typography>{item.label}</Typography>
           </Box>
-          <Image
-            src={item.image}
-            alt={item.label}
-            width={320}
-            height={748}
-          />
+          <Image src={item.image} alt={item.label} width={320} height={748} />
         </Box>
       ))}
     </Box>

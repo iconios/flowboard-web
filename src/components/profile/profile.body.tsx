@@ -45,7 +45,9 @@ const ProfileBody = () => {
         />
       )}
       <Button
-        onClick={() => { router.push("/contact-us"); }}
+        onClick={() => {
+          router.push("/contact-us");
+        }}
         sx={{
           border: "1px gray solid",
           padding: 1,
@@ -55,7 +57,9 @@ const ProfileBody = () => {
         Contact Us
       </Button>
       <Button
-        onClick={() => { router.push("/privacy"); }}
+        onClick={() => {
+          router.push("/privacy");
+        }}
         sx={{
           borderBottom: "1px gray solid",
           borderLeft: "1px gray solid",
@@ -67,7 +71,9 @@ const ProfileBody = () => {
         Privacy Policy
       </Button>
       <Button
-        onClick={() => { router.push("/terms"); }}
+        onClick={() => {
+          router.push("/terms");
+        }}
         sx={{
           borderBottom: "1px gray solid",
           borderLeft: "1px gray solid",
@@ -79,7 +85,9 @@ const ProfileBody = () => {
         Terms of Service
       </Button>
       <Button
-        onClick={() => { setOpenDeleteDialog(true); }}
+        onClick={() => {
+          setOpenDeleteDialog(true);
+        }}
         sx={{
           borderBottom: "1px gray solid",
           borderLeft: "1px gray solid",
@@ -98,14 +106,18 @@ const ProfileBody = () => {
           alignSelf: "center",
           py: 1,
         }}
-        onClick={() => { handleLogout(); }}
+        onClick={() => {
+          handleLogout();
+        }}
       >
         Log out
       </Button>
       {openDeleteDialog && (
         <DeleteUserDialog
           open={openDeleteDialog}
-          onClose={() => { setOpenDeleteDialog(false); }}
+          onClose={() => {
+            setOpenDeleteDialog(false);
+          }}
           onSuccess={handleLogout}
         />
       )}

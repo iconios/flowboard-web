@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
+// Each comment UI component
 "use client";
 
 import { UpdateCommentServerAction } from "@/actions/comments.server.action";
@@ -23,7 +24,11 @@ import { useState } from "react";
 import DeleteCommentDialog from "./deleteCommentDialog";
 import EditCommentDialog from "./editCommentDialog";
 
-const CommentContent = ({ comment }: { comment: CommentType }) => {
+const CommentContent = ({
+  comment,
+}: {
+  comment: CommentType & { userId: string };
+}) => {
   const { user } = useUserContext();
   const theme = useTheme();
   const firstAlphabet = user.firstname[0];
@@ -70,8 +75,13 @@ const CommentContent = ({ comment }: { comment: CommentType }) => {
             sx={{
               ml: 1,
             }}
+            display={comment.userId === user.id ? "block" : "none"}
           >
-            <IconButton onClick={() => { setOpenEditDialog(true); }}>
+            <IconButton
+              onClick={() => {
+                setOpenEditDialog(true);
+              }}
+            >
               <Edit />
             </IconButton>
             <EditCommentDialog
@@ -79,17 +89,25 @@ const CommentContent = ({ comment }: { comment: CommentType }) => {
               content={comment.content}
               taskId={comment.taskId}
               commentId={comment.id}
-              onClose={() => { setOpenEditDialog(false); }}
+              onClose={() => {
+                setOpenEditDialog(false);
+              }}
             />
 
-            <IconButton onClick={() => { setOpenDeleteDialog(true); }}>
+            <IconButton
+              onClick={() => {
+                setOpenDeleteDialog(true);
+              }}
+            >
               <Delete />
             </IconButton>
             <DeleteCommentDialog
               dialogOpen={openDeleteDialog}
               taskId={comment.taskId}
               commentId={comment.id}
-              onClose={() => { setOpenDeleteDialog(false); }}
+              onClose={() => {
+                setOpenDeleteDialog(false);
+              }}
             />
           </Box>
         }

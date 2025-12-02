@@ -9,7 +9,6 @@ interface FeaturesProps {
 
 const Features = forwardRef<HTMLElement, FeaturesProps>(
   ({ openFeatures }, ref) => {
-
     const gridSize = { xs: 12, sm: 12, md: 4 };
     const gridStyle = {
       padding: 2,

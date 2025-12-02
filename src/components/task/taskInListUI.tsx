@@ -79,7 +79,12 @@ const TaskInListUI = ({
             {title}
           </Typography>
         </Link>
-        <IconButton onClick={() => { setOpen(true); }} sx={{ color: bgColor }}>
+        <IconButton
+          onClick={() => {
+            setOpen(true);
+          }}
+          sx={{ color: bgColor }}
+        >
           <Delete />
         </IconButton>
       </Box>

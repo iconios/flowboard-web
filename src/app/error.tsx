@@ -111,7 +111,9 @@ const ErrorPage = ({ error, reset }: Readonly<ErrorProps>) => {
 
             <Button
               variant="text"
-              onClick={() => { window.location.reload(); }}
+              onClick={() => {
+                window.location.reload();
+              }}
               size="large"
             >
               Reload Page

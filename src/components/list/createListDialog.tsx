@@ -71,7 +71,7 @@ const CreateListDialog = ({
 
     if (mutation.isError) {
       setNotification({
-        message: (mutation.error.message) || "Failed to create list",
+        message: mutation.error.message || "Failed to create list",
         messageType: "error",
       });
     }

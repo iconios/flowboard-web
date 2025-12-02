@@ -44,8 +44,6 @@ const BoardsPage = () => {
     retry: 1,
   });
 
-  console.log("Board details frontend", data);
-
   if (isError)
     return <NotificationBar message={error.message} messageType="error" />;
 

@@ -140,14 +140,18 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
               startIcon={<Create />}
               variant="contained"
               disabled={formik.isSubmitting || !formik.values.content.trim()}
-              onClick={() => { formik.handleSubmit(); }}
+              onClick={() => {
+                formik.handleSubmit();
+              }}
               sx={{ mr: 2 }}
             >
               Create
             </Button>
             <Button
               type="reset"
-              onClick={() => { formik.resetForm(); }}
+              onClick={() => {
+                formik.resetForm();
+              }}
               sx={{
                 color: "#FF6D00",
                 borderColor: "#FF6D00",

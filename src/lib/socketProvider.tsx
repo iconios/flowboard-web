@@ -49,13 +49,15 @@ export function SocketProvider({
     });
 
     // Wire up basic events
-    s.on("connect", () => { console.log("[socket] connected:", s.id); });
-    s.on("disconnect", (reason) =>
-      { console.log("[socket] disconnected:", reason); },
-    );
-    s.on("connect_error", (err: any) =>
-      { console.error("[socket] connect_error:", err.message); },
-    );
+    s.on("connect", () => {
+      console.log("[socket] connected:", s.id);
+    });
+    s.on("disconnect", (reason) => {
+      console.log("[socket] disconnected:", reason);
+    });
+    s.on("connect_error", (err: any) => {
+      console.error("[socket] connect_error:", err.message);
+    });
 
     setSocket(s);
 

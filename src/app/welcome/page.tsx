@@ -5,7 +5,7 @@ import { Suspense } from "react";
 const WelcomePage = () => {
   return (
     <Suspense fallback={<WelcomePageSkeleton />}>
-      <LoginRegisterTabs />;
+      <LoginRegisterTabs />
     </Suspense>
   );
 };

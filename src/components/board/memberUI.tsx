@@ -105,7 +105,9 @@ const MemberUI = ({ member }: MemberType) => {
               </FormControl>
               <Button
                 variant="text"
-                onClick={() => { setOpenDialog(true); }}
+                onClick={() => {
+                  setOpenDialog(true);
+                }}
                 sx={{
                   ml: 2,
                   display:
@@ -118,7 +120,9 @@ const MemberUI = ({ member }: MemberType) => {
             <RemoveMemberDialog
               memberName={member.user.firstname}
               dialogOpen={openDialog}
-              onClose={() => { setOpenDialog(false); }}
+              onClose={() => {
+                setOpenDialog(false);
+              }}
               memberId={member.memberId}
               boardId={member.boardId}
             />

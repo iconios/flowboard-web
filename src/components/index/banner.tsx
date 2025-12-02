@@ -13,6 +13,7 @@ const Banner = ({ setFeatures }: { setFeatures: () => void }) => {
         flex: 1,
         paddingTop: { xs: 8, sm: 16 },
         paddingX: { xs: 4, sm: 8, md: 24 },
+        pb: { xs: 24 },
       }}
     >
       <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "500" }}>
@@ -61,7 +62,9 @@ const Banner = ({ setFeatures }: { setFeatures: () => void }) => {
             ":hover": { color: theme.palette.primary.dark },
             paddingX: 2,
           }}
-          onClick={() => { setFeatures(); }}
+          onClick={() => {
+            setFeatures();
+          }}
         >
           Learn More
         </Button>
