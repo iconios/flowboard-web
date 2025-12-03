@@ -55,7 +55,6 @@ export type CreateTaskServerResponseType = z.infer<
 
 export const CreateTaskInputSchema = CreateTaskFormSchema.extend({
   listId: z.string(),
-  boardId: z.string(),
 });
 
 export type CreateTaskInputType = z.infer<typeof CreateTaskInputSchema>;

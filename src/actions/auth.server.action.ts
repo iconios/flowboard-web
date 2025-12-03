@@ -62,7 +62,11 @@ const LoginServerAction = async ({
   password,
 }: FormValuesType): Promise<LoginAuthOutputType> => {
   if (!SERVER_BASE_URL) {
-    throw new Error("Server Url is required");
+    return {
+      ok: false,
+      error: "Server Url is required",
+      user: null
+    }
   }
 
   console.log("Login server action called", {
@@ -85,11 +89,21 @@ const LoginServerAction = async ({
     const result: LoginServerResponseType = await response.json();
 
     if (!result.success || !response.ok) {
-      throw new Error(result.message);
+      return {
+        ok: false,
+        error: result.message || "Username or password incorrect",
+      user: null
+      }
     }
 
     const token = result.token;
-    if (!token) throw new Error("Missing token");
+    if (!token) {
+      return {
+        ok: false,
+        error: "Missing token",
+      user: null
+      }
+    }
     (await cookies()).set("token", token, {
       httpOnly: true, // protects against XSS
       secure: process.env.NODE_ENV === "production", // only over HTTPS (true in prod)
@@ -98,13 +112,19 @@ const LoginServerAction = async ({
       maxAge: 60 * 60 * 24 * 1,
     });
 
-    return result.user;
+    return {
+      ok: true,
+      user: result.user,
+      error: ""
+    }
   } catch (error) {
     console.error(`Error logging in ${email}`, error);
 
-    if (error instanceof Error) throw error;
-
-    throw new Error("Error logging in. Please try again");
+    return {
+      ok: false,
+      error: "Error logging in. Please try again",
+      user: null
+    }
   }
 };
 

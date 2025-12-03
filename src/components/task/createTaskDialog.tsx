@@ -71,8 +71,8 @@ const CreateTaskDialog = ({
   //  Mutation
   const mutation = useMutation({
     mutationKey: [`tasks:${listId}`, "tasks"],
-    mutationFn: (newTask: CreateTaskInputType) =>
-      CreateTasksServerAction(newTask),
+    mutationFn: async (newTask: CreateTaskInputType) =>
+      await CreateTasksServerAction(newTask),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["list", `list:${boardId}`],
@@ -84,9 +84,9 @@ const CreateTaskDialog = ({
       formik.resetForm();
       handleDialogClose();
     },
-    onError: () => {
+    onError: (error) => {
       setNotification({
-        message: mutation?.error?.message ?? "Failed to create task",
+        message: error.message ?? "Failed to create task",
         messageType: "error",
       });
     },
@@ -100,7 +100,6 @@ const CreateTaskDialog = ({
     console.log(values);
     const newTaskInput = {
       listId,
-      boardId,
       ...values,
     };
     try {

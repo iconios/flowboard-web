@@ -20,7 +20,6 @@ import { useEffect, useState } from "react";
 import { useUserContext } from "@/lib/user.context";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useRouter } from "next/navigation";
-
 const InAppHeader = ({
   title,
   backRoute,
@@ -112,12 +111,14 @@ const InAppHeader = ({
                 flexDirection: "row",
               }}
             >
-              <Image
-                src={"/logo.png"}
-                alt={"FlowBoard Logo"}
-                height={40}
-                width={200}
-              />
+              <Link href={"/"}>
+                <Image
+                  src={"/logo.png"}
+                  alt={"FlowBoard Logo"}
+                  height={40}
+                  width={200}                
+                />
+              </Link>
               <Typography variant="h5" sx={{ ml: 2, pt: 0.8 }}>
                 {title}
               </Typography>

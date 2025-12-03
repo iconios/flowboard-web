@@ -137,9 +137,16 @@ const LoginServerResponseSchema = SignUpAuthServerResponseSchema.extend({
 export type LoginServerResponseType = z.infer<typeof LoginServerResponseSchema>;
 
 const LoginAuthOutputSchema = z.object({
-  id: z.string(),
-  email: z.string(),
-  firstname: z.string(),
+  ok: z.boolean(),
+  error: z.string(),
+  user: z.union([
+    z.object({
+    id: z.string(),
+    email: z.string(),
+    firstname: z.string(),
+  }),
+  z.null()
+  ]),
 });
 
 export type LoginAuthOutputType = z.infer<typeof LoginAuthOutputSchema>;

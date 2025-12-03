@@ -39,6 +39,7 @@ const CreateTasksServerAction = async (
   validateServerUrlAndToken(token);
 
   try {
+    console.log("Task data", createTaskInput)
     const validatedInput = CreateTaskInputSchema.parse(createTaskInput);
     const { listId, ...newTaskInput } = validatedInput;
     const response = await fetch(`${SERVER_BASE_URL}/task/${listId}`, {

@@ -27,13 +27,13 @@ const BoardsPage = () => {
   const redirected = useRef(false);
 
   useEffect(() => {
-    if (redirected.current) return;
+    if (redirected.current || isLoading) return;
 
     if (!user.id) {
       redirected.current = true;
       router.replace("/welcome");
     }
-  }, [user.id, router]);
+  }, [user.id, router, isLoading]);
 
   // Get the boards from server
   const { isPending, isError, error, data } = useQuery({

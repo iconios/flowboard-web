@@ -39,6 +39,7 @@ const LoginTabPanel = () => {
   const [notification, setNotification] = useState<NotificationBarType | null>(
     null,
   );
+  const [triggerKey, setTriggerKey] = useState(0)
   const { LogIn, isLoading } = useUserContext();
   const initialValues: FormValuesType = {
     email: "",
@@ -48,19 +49,28 @@ const LoginTabPanel = () => {
 
   const mutation = useMutation({
     mutationKey: ["user"],
-    mutationFn: (values: { email: string; password: string }) =>
-      LoginServerAction(values),
-    onSuccess: (result) => {
-      // Update the state variable with the result
-      LogIn(result.id, result.email, result.firstname);
-      setNotification({
-        message: "Login successful",
-        messageType: "success",
-      });
-      formik.resetForm();
-      router.push("/my-boards");
+    mutationFn: async (values: { email: string; password: string }) => {
+      const result = await LoginServerAction(values);
+      if (!result.ok) {
+        throw new Error(result.error)
+      }
+
+      return result.user;
+    },      
+    onSuccess: (user) => {
+      if(user) {
+        LogIn(user.id, user.email, user.firstname);
+        setTriggerKey((k) => k + 1);
+        setNotification({
+          message: "Login successful",
+          messageType: "success",
+        });
+        formik.resetForm();
+        router.push("/my-boards");
+      }
     },
     onError: (error) => {
+        setTriggerKey((k) => k + 1);
       setNotification({
         message: error.message,
         messageType: "error",
@@ -121,6 +131,7 @@ const LoginTabPanel = () => {
         <NotificationBar
           message={notification.message}
           messageType={notification.messageType}
+          key={triggerKey}
         />
       )}
       <form onSubmit={formik.handleSubmit}>
