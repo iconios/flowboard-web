@@ -108,9 +108,9 @@ const NavBar = () => {
                 }}
               >
                 <MenuItem
-                onClick={() => {
-                  router.push("/my-boards");
-                }}
+                  onClick={() => {
+                    router.push("/my-boards");
+                  }}
                   sx={{ p: 0, display: user.id ? "block" : "none" }}
                   LinkComponent={Link}
                   href="/my-boards"
@@ -153,7 +153,9 @@ const NavBar = () => {
             /* Desktop View */
             <Stack direction="row" spacing={2}>
               <Button
-              onClick={() => { router.push("/my-boards"); }}
+                onClick={() => {
+                  router.push("/my-boards");
+                }}
                 variant="contained"
                 sx={{
                   textTransform: "none",

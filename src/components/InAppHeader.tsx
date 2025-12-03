@@ -116,7 +116,7 @@ const InAppHeader = ({
                   src={"/logo.png"}
                   alt={"FlowBoard Logo"}
                   height={40}
-                  width={200}                
+                  width={200}
                 />
               </Link>
               <Typography variant="h5" sx={{ ml: 2, pt: 0.8 }}>
@@ -163,9 +163,14 @@ const InAppHeader = ({
                   },
                 }}
               >
-                <MenuItem sx={{ p: 0, display: showUserDetails ? "block" : "none" }} LinkComponent={Link} href="/my-boards" onClick={() => {
-                  router.push("/my-boards");
-                }}>
+                <MenuItem
+                  sx={{ p: 0, display: showUserDetails ? "block" : "none" }}
+                  LinkComponent={Link}
+                  href="/my-boards"
+                  onClick={() => {
+                    router.push("/my-boards");
+                  }}
+                >
                   <Button
                     sx={{
                       bgcolor: "primary.main",
@@ -217,7 +222,7 @@ const InAppHeader = ({
                   py: 1.5,
                   px: 3,
                   width: "100%",
-                  display: showUserDetails ? "block" : "none"
+                  display: showUserDetails ? "block" : "none",
                 }}
               >
                 Boards
@@ -233,7 +238,7 @@ const InAppHeader = ({
                   fontSize: { sm: "0.9rem", md: "1rem" },
                   py: 1.5,
                   px: 3,
-                  width: "100%"
+                  width: "100%",
                 }}
                 onClick={showUserDetails ? handleLogout : handleLogin}
               >

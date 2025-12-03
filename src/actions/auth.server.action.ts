@@ -65,8 +65,8 @@ const LoginServerAction = async ({
     return {
       ok: false,
       error: "Server Url is required",
-      user: null
-    }
+      user: null,
+    };
   }
 
   console.log("Login server action called", {
@@ -91,9 +91,9 @@ const LoginServerAction = async ({
     if (!result.success || !response.ok) {
       return {
         ok: false,
-        error: result.message || "Username or password incorrect",
-      user: null
-      }
+        error: result.message,
+        user: null,
+      };
     }
 
     const token = result.token;
@@ -101,8 +101,8 @@ const LoginServerAction = async ({
       return {
         ok: false,
         error: "Missing token",
-      user: null
-      }
+        user: null,
+      };
     }
     (await cookies()).set("token", token, {
       httpOnly: true, // protects against XSS
@@ -115,16 +115,16 @@ const LoginServerAction = async ({
     return {
       ok: true,
       user: result.user,
-      error: ""
-    }
+      error: null,
+    };
   } catch (error) {
     console.error(`Error logging in ${email}`, error);
 
     return {
       ok: false,
       error: "Error logging in. Please try again",
-      user: null
-    }
+      user: null,
+    };
   }
 };
 

@@ -108,7 +108,7 @@ const RegisterTabPanel = () => {
         borderRadius: 5,
         px: 1,
         py: 2,
-        mb: 16
+        mb: 16,
       }}
     >
       {notification && (
@@ -262,7 +262,7 @@ const RegisterTabPanel = () => {
             typography: {
               sx: {
                 ...theme.typography.body2,
-                fontSize: 14
+                fontSize: 14,
               },
             },
           }}

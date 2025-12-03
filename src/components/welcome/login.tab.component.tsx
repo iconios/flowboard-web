@@ -39,7 +39,7 @@ const LoginTabPanel = () => {
   const [notification, setNotification] = useState<NotificationBarType | null>(
     null,
   );
-  const [triggerKey, setTriggerKey] = useState(0)
+  const [triggerKey, setTriggerKey] = useState(0);
   const { LogIn, isLoading } = useUserContext();
   const initialValues: FormValuesType = {
     email: "",
@@ -51,14 +51,14 @@ const LoginTabPanel = () => {
     mutationKey: ["user"],
     mutationFn: async (values: { email: string; password: string }) => {
       const result = await LoginServerAction(values);
-      if (!result.ok) {
-        throw new Error(result.error)
+      if (!result.ok || result.error) {
+        throw new Error(result.error ?? "Login failed");
       }
 
       return result.user;
-    },      
+    },
     onSuccess: (user) => {
-      if(user) {
+      if (user) {
         LogIn(user.id, user.email, user.firstname);
         setTriggerKey((k) => k + 1);
         setNotification({
@@ -70,7 +70,7 @@ const LoginTabPanel = () => {
       }
     },
     onError: (error) => {
-        setTriggerKey((k) => k + 1);
+      setTriggerKey((k) => k + 1);
       setNotification({
         message: error.message,
         messageType: "error",
@@ -124,7 +124,7 @@ const LoginTabPanel = () => {
         borderRadius: 5,
         px: 1,
         py: 2,
-        mb: 8
+        mb: 8,
       }}
     >
       {notification && (

@@ -138,14 +138,14 @@ export type LoginServerResponseType = z.infer<typeof LoginServerResponseSchema>;
 
 const LoginAuthOutputSchema = z.object({
   ok: z.boolean(),
-  error: z.string(),
+  error: z.union([z.string(), z.null()]),
   user: z.union([
     z.object({
-    id: z.string(),
-    email: z.string(),
-    firstname: z.string(),
-  }),
-  z.null()
+      id: z.string(),
+      email: z.string(),
+      firstname: z.string(),
+    }),
+    z.null(),
   ]),
 });
 

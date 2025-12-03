@@ -105,7 +105,7 @@ const UpdateBoardServerAction = async (
       throw new Error("No board found");
     }
 
-    revalidateTag("board");
+    revalidateTag("board", "max");
 
     return {
       boardId: result.board.id,
@@ -149,7 +149,7 @@ const DeleteBoardServerAction = async (
       throw new Error(result.message);
     }
 
-    revalidateTag("board");
+    revalidateTag("board", "max");
     return {
       message: result.message,
     };
@@ -189,7 +189,7 @@ const CreateBoardServerAction = async (values: {
       throw new Error(result.message);
     }
 
-    revalidateTag("board");
+    revalidateTag("board", "max");
     return {
       board: result.board,
     };
