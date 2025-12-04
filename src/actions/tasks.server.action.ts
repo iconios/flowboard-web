@@ -58,8 +58,8 @@ const CreateTasksServerAction = async (
       throw new Error(result.message);
     }
 
-    revalidateTag("task", "max");
-    revalidateTag(`task:${listId}`, "max");
+    revalidateTag("task");
+    revalidateTag(`task:${listId}`);
 
     return result.task;
   } catch (error) {
@@ -134,8 +134,8 @@ const UpdateTaskServerAction = async (updateTaskInput: UpdateTaskInputType) => {
       throw new Error(result.message);
     }
 
-    revalidateTag("task", "max");
-    revalidateTag(`task:${listId}`, "max");
+    revalidateTag("task");
+    revalidateTag(`task:${listId}`);
     return result.task;
   } catch (error) {
     console.error("Error updating task", error);
@@ -172,8 +172,8 @@ const DeleteTaskServerAction = async (deleteTaskData: DeleteTaskInputType) => {
       throw new Error(result.message);
     }
 
-    revalidateTag("task", "max");
-    revalidateTag(`task:${listId}`, "max");
+    revalidateTag("task");
+    revalidateTag(`task:${listId}`);
     return result.message;
   } catch (error) {
     console.error("Error deleting task", error);

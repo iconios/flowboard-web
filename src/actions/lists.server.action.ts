@@ -85,8 +85,8 @@ const CreateListServerAction = async (createListInput: CreateListInputType) => {
       throw new Error(result.message);
     }
 
-    revalidateTag("list", "max");
-    revalidateTag(`list:${boardId}`, "max");
+    revalidateTag("list");
+    revalidateTag(`list:${boardId}`);
 
     return result.list;
   } catch (error) {
@@ -124,8 +124,8 @@ const EditListServerAction = async (editListInput: EditListInputType) => {
       throw new Error(result.message);
     }
 
-    revalidateTag("list", "max");
-    revalidateTag(`list:${boardId}`, "max");
+    revalidateTag("list");
+    revalidateTag(`list:${boardId}`);
     return result.list;
   } catch (error) {
     console.error("Error editing list", error);
@@ -159,8 +159,8 @@ const DeleteListServerAction = async (deleteListInput: DeleteListInputType) => {
       throw new Error(result.message);
     }
 
-    revalidateTag("list", "max");
-    revalidateTag(`list:${boardId}`, "max");
+    revalidateTag("list");
+    revalidateTag(`list:${boardId}`);
     return result.list;
   } catch (error) {
     console.error("Edit deleting list", error);

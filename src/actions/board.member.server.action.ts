@@ -51,8 +51,8 @@ const CreateBoardMemberServerAction = async (
       throw new Error(result.message);
     }
 
-    revalidateTag("board-member", "max");
-    revalidateTag(`board-member:${validatedInput.board_id}`, "max");
+    revalidateTag("board-member");
+    revalidateTag(`board-member:${validatedInput.board_id}`);
     return {
       success: true,
       message: result.message,
@@ -126,8 +126,8 @@ const RemoveBoardMemberServerAction = async (
       throw new Error(result.message);
     }
 
-    revalidateTag("board-member", "max");
-    revalidateTag(`board-member:${boardId}`, "max");
+    revalidateTag("board-member");
+    revalidateTag(`board-member:${boardId}`);
     return result.message;
   } catch (error) {
     console.error("Error removing board member", error);

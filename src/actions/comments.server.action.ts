@@ -59,8 +59,8 @@ const CreateCommentServerAction = async (
       throw new Error(result.message);
     }
 
-    revalidateTag("comments", "max");
-    revalidateTag(`comments:${taskId}`, "max");
+    revalidateTag("comments");
+    revalidateTag(`comments:${taskId}`);
 
     return result.comment;
   } catch (error) {
@@ -137,8 +137,8 @@ const UpdateCommentServerAction = async (
       throw new Error(result.message);
     }
 
-    revalidateTag("comments", "max");
-    revalidateTag(`comments:${taskId}`, "max");
+    revalidateTag("comments");
+    revalidateTag(`comments:${taskId}`);
 
     return {
       message: result.message,
@@ -184,8 +184,8 @@ const DeleteCommentServerAction = async (
       throw new Error(`${result.message}`);
     }
 
-    revalidateTag("comments", "max");
-    revalidateTag(`comments:${taskId}`, "max");
+    revalidateTag("comments");
+    revalidateTag(`comments:${taskId}`);
 
     return result.message;
   } catch (error) {
