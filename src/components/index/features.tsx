@@ -77,10 +77,10 @@ const Features = forwardRef<HTMLElement, FeaturesProps>(
               </svg>
             </Box>
             <Typography variant="body1" sx={featureTitleStyle}>
-              Kanban Boards
+              Team Boards
             </Typography>
             <Typography variant="body2" sx={{ fontWeight: "200" }}>
-              Visualize your workflow with customizable boards, lists, and cards
+              <Typography component={"span"} sx={{ fontWeight: "400", fontSize: 17 }}>Kanban boards{" "}</Typography>to visualize your workflow with customizable boards, lists, and tasks
             </Typography>
           </Grid>
           <Grid size={gridSize} sx={gridStyle}>

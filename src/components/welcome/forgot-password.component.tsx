@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, useTheme } from "@mui/material";
 import { FormikHelpers, useFormik } from "formik";
 import {
   ForgotPasswordSchema,
@@ -14,6 +14,8 @@ import { useState } from "react";
 import NotificationBar from "@/lib/notificationBar";
 
 const ForgotPassword = () => {
+  const theme =useTheme();
+  const [triggerKey, setTriggerKey] = useState(0);
   const [notification, setNotification] = useState<NotificationBarType | null>(
     null,
   );
@@ -24,6 +26,7 @@ const ForgotPassword = () => {
     mutationFn: (values: { email: string }) =>
       ForgotPasswordServerAction(values),
     onSuccess: (result) => {
+      setTriggerKey((k) => k + 1);
       setNotification({
         message: result.message,
         messageType: "success",
@@ -31,6 +34,7 @@ const ForgotPassword = () => {
       formik.resetForm();
     },
     onError: (error) => {
+      setTriggerKey((k) => k + 1);
       setNotification({
         message: error.message,
         messageType: "error",
@@ -66,6 +70,7 @@ const ForgotPassword = () => {
         <NotificationBar
           message={notification.message}
           messageType={notification.messageType}
+          key={triggerKey}
         />
       )}
       <Box
@@ -83,6 +88,19 @@ const ForgotPassword = () => {
             id="email"
             name="email"
             variant="outlined"
+            size="small"
+            slotProps={{
+              inputLabel: {
+                style: {
+                  ...theme.typography.body2,
+                },
+              },
+              input: {
+                style: {
+                  ...theme.typography.body2,
+                },
+              },
+            }}
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -97,7 +115,7 @@ const ForgotPassword = () => {
             type="submit"
             color="primary"
             variant="contained"
-            sx={{ mt: 2, width: { xs: "100%" } }}
+            sx={{ mt: 2, width: { xs: "100%" }, py: 1.5 }}
           >
             Submit
           </Button>
