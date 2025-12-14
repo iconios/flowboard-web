@@ -6,6 +6,7 @@ import NavBar from "@/components/NavBar";
 import { Container, useMediaQuery } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import Timelines from "@/components/index/timeline";
 
 const Home = () => {
   const theme = useTheme();
@@ -48,6 +49,7 @@ const Home = () => {
       <NavBar />
       <Banner setFeatures={handleSetFeatures} />
       <Features openFeatures={openFeatures} ref={featureRef} />
+      <Timelines />
       <Footer xs={"100%"} sm={"90%"} md={"90%"} />
     </Container>
   );

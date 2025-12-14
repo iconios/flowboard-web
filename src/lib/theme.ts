@@ -156,6 +156,9 @@ const theme = createTheme({
     secondary: {
       main: colors.secondary.main,
     },
+    accent: {
+      main: colors.accent.main,
+    },
     error: {
       main: colors.error,
     },

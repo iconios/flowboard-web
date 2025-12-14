@@ -12,15 +12,15 @@ const Features = forwardRef<HTMLElement, FeaturesProps>(
     const gridSize = { xs: 12, sm: 12, md: 4 };
     const gridStyle = {
       padding: 2,
-      borderWidth: 1,
+      borderWidth: 2,
       borderStyle: "solid",
       borderRadius: 2,
-      borderColor: "#DBDBDB",
+      borderColor: "#FFFFFF",
     };
     const featureTitleStyle = { fontWeight: "400" };
     const svgBoxStyle = {
       width: 40,
-      backgroundColor: "#F2F2F2",
+      backgroundColor: "#DBDBDB",
       padding: 1,
       borderRadius: 1,
       marginBottom: 2,
@@ -38,7 +38,8 @@ const Features = forwardRef<HTMLElement, FeaturesProps>(
           borderColor: "#DBDBDB",
           paddingY: 4,
           marginTop: 8,
-          marginBottom: { sm: 2, lg: 12 },
+          marginBottom: { sm: 4, lg: 12 },
+          backgroundColor: "#F2F2F2",
         }}
       >
         <Box>
@@ -80,7 +81,14 @@ const Features = forwardRef<HTMLElement, FeaturesProps>(
               Team Boards
             </Typography>
             <Typography variant="body2" sx={{ fontWeight: "200" }}>
-              <Typography component={"span"} sx={{ fontWeight: "400", fontSize: 17 }}>Kanban boards{" "}</Typography>to visualize your workflow with customizable boards, lists, and tasks
+              <Typography
+                component={"span"}
+                sx={{ fontWeight: "400", fontSize: 17 }}
+              >
+                Kanban boards{" "}
+              </Typography>
+              to visualize your workflow with customizable boards, lists, and
+              tasks
             </Typography>
           </Grid>
           <Grid size={gridSize} sx={gridStyle}>

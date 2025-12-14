@@ -61,6 +61,7 @@ const Banner = ({ setFeatures }: { setFeatures: () => void }) => {
             borderStyle: "solid",
             ":hover": { color: theme.palette.primary.dark },
             paddingX: 2,
+            py: 1.5,
           }}
           onClick={() => {
             setFeatures();

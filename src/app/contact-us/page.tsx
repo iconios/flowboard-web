@@ -121,7 +121,7 @@ const ContactPage = () => {
                 fontWeight: "200",
               }}
             >
-              Phone: +234 803 839 9414
+              Phone: +234 810 032 0950
             </Link>
             <Typography variant="body2" sx={{ fontWeight: "200" }}>
               Email: info@nerdywebconsults.ng

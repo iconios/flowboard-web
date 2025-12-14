@@ -14,7 +14,7 @@ import { useState } from "react";
 import NotificationBar from "@/lib/notificationBar";
 
 const ForgotPassword = () => {
-  const theme =useTheme();
+  const theme = useTheme();
   const [triggerKey, setTriggerKey] = useState(0);
   const [notification, setNotification] = useState<NotificationBarType | null>(
     null,
