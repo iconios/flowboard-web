@@ -66,7 +66,7 @@ const Timelines = () => {
   //   listStyle: "none"
   // }
   return (
-    <Box>
+    <Box sx={{mt: {xs: 4, md: 0}}}>
       {items.map((item, index) =>
         index % 2 === 0 ? (
           <EvenTimelineItem
