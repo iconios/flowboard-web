@@ -1,4 +1,4 @@
- // Even index timeline component
+// Even index timeline component
 
 import { TimelineItemType } from "@/lib/index.types";
 import { Box, Stack, Typography, useTheme, useMediaQuery } from "@mui/material";
@@ -23,10 +23,15 @@ const EvenTimelineItem = ({
         borderRadius: { xs: 5, sm: 10 },
       }}
     >
-      <Box sx={{ width: { xs: "100%", md: "50%" }, p: 2, 
+      <Box
+        sx={{
+          width: { xs: "100%", md: "50%" },
+          p: 2,
           justifyContent: "center",
           alignItems: "center",
-          display: "flex", }}>
+          display: "flex",
+        }}
+      >
         {isMobile ? (
           <Image src={img.src} alt={img.alt} width={300} height={300} />
         ) : (
@@ -36,7 +41,7 @@ const EvenTimelineItem = ({
       <Box
         sx={{
           width: { xs: "100%", md: "50%" },
-          px: { xs: 4, md: 8},
+          px: { xs: 4, md: 8 },
           pb: { xs: 4, md: 0 },
           justifyContent: "center",
           alignItems: "center",
@@ -47,7 +52,10 @@ const EvenTimelineItem = ({
           <Typography variant="h5" sx={{ textAlign: "center" }}>
             {title}
           </Typography>
-          <Typography variant="body2" sx={{ textAlign: "center", fontSize: {xs: 22, md: 18} }}>
+          <Typography
+            variant="body2"
+            sx={{ textAlign: "center", fontSize: { xs: 22, md: 18 } }}
+          >
             {description}
           </Typography>
         </Stack>

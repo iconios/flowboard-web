@@ -38,7 +38,7 @@ const BoardsLayout = ({ children }: { children: React.ReactNode }) => {
         >
           <SocketProvider>{children}</SocketProvider>
         </Box>
-        <InAppFooter xs={"100%"} sm={"80%"} md={"70%"} />
+        <InAppFooter xs={"100%"} sm={"80%"} md={"70%"} key={"inAppFooter"} />
       </Paper>
     </Box>
   );

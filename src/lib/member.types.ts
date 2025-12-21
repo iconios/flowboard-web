@@ -62,17 +62,15 @@ const GetBoardMembersSchema = z.object({
 export type GetBoardMembersType = z.infer<typeof GetBoardMembersSchema>;
 
 export const MemberSchema = z.object({
-  member: z.object({
-    memberId: z.string(),
-    boardId: z.string(),
-    user: z.object({
-      firstname: z.string(),
-      email: z.string(),
-      userId: z.string(),
-    }),
-    role: z.string(),
-    boardOwnerUserId: z.string(),
+  memberId: z.string(),
+  boardId: z.string(),
+  user: z.object({
+    firstname: z.string(),
+    email: z.string(),
+    userId: z.string(),
   }),
+  role: z.string(),
+  boardOwnerUserId: z.string(),
 });
 
 export type MemberType = z.infer<typeof MemberSchema>;

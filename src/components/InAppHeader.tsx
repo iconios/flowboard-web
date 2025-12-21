@@ -33,7 +33,7 @@ const InAppHeader = ({
   const [isClient, setIsClient] = useState(false);
   const { user, LogOut } = useUserContext();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"), { noSsr: true });
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   // Mark when component is on client
@@ -83,21 +83,22 @@ const InAppHeader = ({
           }}
         >
           {/* Left Cluster: Back Arrow */}
-          <Box
-            aria-label="Nerdy logo"
-            component={Link}
-            href={backRoute ?? "/"}
-            display={backView ? "block" : "none"}
-          >
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="back button"
+          {backView && backRoute && (
+            <Box
+              aria-label="Nerdy logo"
+              component={Link}
+              href={backRoute || "#"}
             >
-              <ArrowBackIcon />
-            </IconButton>
-          </Box>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="back button"
+              >
+                <ArrowBackIcon />
+              </IconButton>
+            </Box>
+          )}
 
           {/* Flexible Spacer */}
           <Box sx={{ flexGrow: 1 }} />

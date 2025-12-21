@@ -2,11 +2,11 @@ import { useCallback } from "react";
 import { useSocket } from "@/lib/socketProvider";
 
 const useDragPersistence = () => {
-  const socket = useSocket();
+  const { socket, isConnected } = useSocket();
 
   const persistTaskReorder = useCallback(
     (taskId: string, listId: string, newPosition: number) => {
-      if (!socket?.connected) {
+      if (!socket || !isConnected) {
         console.warn("Socket not available for task move persistence");
         return;
       }
@@ -23,12 +23,12 @@ const useDragPersistence = () => {
         console.error("Failed to reorder task", error);
       }
     },
-    [socket],
+    [socket, isConnected],
   );
 
   const persistTaskMove = useCallback(
     (taskId: string, listId: string) => {
-      if (!socket?.connected) {
+      if (!socket || !isConnected) {
         console.warn("Socket not available for task move persistence");
         return;
       }
@@ -48,12 +48,12 @@ const useDragPersistence = () => {
         console.error("Failed to move task", error);
       }
     },
-    [socket],
+    [socket, isConnected],
   );
 
   const persistListReorder = useCallback(
     (listId: string, newPosition: number) => {
-      if (!socket?.connected) {
+      if (!socket || !isConnected) {
         console.warn("Socket not available for task move persistence");
         return;
       }
@@ -73,7 +73,7 @@ const useDragPersistence = () => {
         console.error("Failed to reorder list", error);
       }
     },
-    [socket],
+    [socket, isConnected],
   );
 
   return {

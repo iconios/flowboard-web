@@ -128,6 +128,7 @@ const EditListDialog = ({
         />
       )}
       <Dialog
+        key={listId}
         open={dialogOpen}
         onClose={onClose}
         fullWidth

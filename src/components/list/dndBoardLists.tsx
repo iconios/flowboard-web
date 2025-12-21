@@ -56,7 +56,7 @@ const DndBoardLists = ({
 }) => {
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const handleTaskReorderSuccess = useHandleTaskReorder();
-  const socket = useSocket();
+  const { socket, isConnected } = useSocket();
   const [notification, setNotification] = useState<NotificationBarType | null>(
     null,
   );
@@ -93,10 +93,12 @@ const DndBoardLists = ({
   );
 
   useEffect(() => {
-    if (!socket) {
-      console.error("Socket not available for board", boardId);
+    // Wait for socket to be available and connected
+    if (!socket || !isConnected) {
       return;
     }
+
+    console.log("Setting up socket listeners for board", boardId);
 
     const handleSuccess = (response: { message: string; roomId: string }) => {
       setNotification({
@@ -157,7 +159,7 @@ const DndBoardLists = ({
         }
       }
     };
-  }, [socket, dndLists, boardId]);
+  }, [socket, dndLists, boardId, isConnected, handleTaskReorderSuccess]);
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.id as string);

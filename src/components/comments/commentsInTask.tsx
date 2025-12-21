@@ -168,7 +168,7 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
         </Stack>
       </Box>
       {comments?.length === 0 ? (
-        <Typography variant="body2">No comments yet - create one!</Typography>
+        <Typography variant="body2" sx={{ fontSize: 14 }}>No comments yet - create one!</Typography>
       ) : (
         <List sx={{ width: "100%", maxWidth: 600 }}>
           {comments?.map((comment) => (

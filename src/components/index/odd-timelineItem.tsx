@@ -26,7 +26,7 @@ const OddTimelineItem = ({
       <Box
         sx={{
           width: { xs: "100%", md: "50%" },
-          px: { xs: 4, md: 8},
+          px: { xs: 4, md: 8 },
           pt: { xs: 4, md: 0 },
           justifyContent: "center",
           alignItems: "center",
@@ -37,15 +37,23 @@ const OddTimelineItem = ({
           <Typography variant="h5" sx={{ textAlign: "center" }}>
             {title}
           </Typography>
-          <Typography variant="body2" sx={{ textAlign: "center", fontSize: {xs: 22, md: 18} }}>
+          <Typography
+            variant="body2"
+            sx={{ textAlign: "center", fontSize: { xs: 22, md: 18 } }}
+          >
             {description}
           </Typography>
         </Stack>
       </Box>
-      <Box sx={{ width: { xs: "100%", md: "50%" }, p: 2, 
+      <Box
+        sx={{
+          width: { xs: "100%", md: "50%" },
+          p: 2,
           justifyContent: "center",
           alignItems: "center",
-          display: "flex", }}>
+          display: "flex",
+        }}
+      >
         {isMobile ? (
           <Image src={img.src} alt={img.alt} width={300} height={300} />
         ) : (

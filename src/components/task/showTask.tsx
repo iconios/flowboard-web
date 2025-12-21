@@ -38,6 +38,7 @@ import TaskPageSkeleton from "../skeletons/taskPageSkeleton";
 import CommentsInTask from "../comments/commentsInTask";
 import { useUserContext } from "@/lib/user.context";
 import { useRouter } from "next/navigation";
+import ShowChecklists from "../checklist/showChecklists";
 
 const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
   const theme = useTheme();
@@ -181,7 +182,7 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
   if (!task) return <p>Task not found</p>;
 
   return (
-    <Container sx={{ marginBottom: 16 }}>
+    <Container sx={{ marginBottom: 16 }} key={taskId}>
       {notification && (
         <NotificationBar
           message={notification.message}
@@ -359,6 +360,7 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
               </Box>
             )}
 
+            <ShowChecklists taskId={taskId} />
             <CommentsInTask taskId={taskId} />
 
             <FormControl fullWidth>

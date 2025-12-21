@@ -22,7 +22,7 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 import RemoveMemberDialog from "./removeMemberDialog";
 import { useUserContext } from "@/lib/user.context";
 
-const MemberUI = ({ member }: MemberType) => {
+const MemberUI = ({ member }: { member: MemberType }) => {
   const theme = useTheme();
   const [openDialog, setOpenDialog] = useState(false);
   const { user } = useUserContext();

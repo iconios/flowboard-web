@@ -69,6 +69,7 @@ const CommentContent = ({
         />
       )}
       <ListItem
+        key={comment.id}
         alignItems="flex-start"
         secondaryAction={
           <Box
