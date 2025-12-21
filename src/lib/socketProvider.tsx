@@ -29,8 +29,7 @@ export function SocketProvider({
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const closingRef = useRef(false);
-  console.trace("SocketProvider children rendered");
-
+  
   useEffect(() => {
     const raw = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
     console.log("[socket] NEXT_PUBLIC_SERVER_BASE_URL:", JSON.stringify(raw));
