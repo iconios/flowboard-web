@@ -2,7 +2,7 @@
 "use client";
 
 import { GetChecklistsServerAction } from "@/actions/checklist.server.action";
-import { List, Typography } from "@mui/material";
+import { Box, Container, List, Skeleton, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import SingleChecklist from "./single.checklist";
 import CreateChecklist from "./create.checklist";
@@ -23,15 +23,16 @@ const ShowChecklists = ({
   const checklists = query.data;
 
   if (query.isLoading) {
-    return (
-      <Typography variant="body2" sx={{ fontSize: 14 }}>
-        Loading checklists...
-      </Typography>
+    return (      
+      <Container>
+        <Skeleton variant="text" sx={{ fontSize: 32 }} />
+        <Skeleton variant="text" sx={{ fontSize: 16 }} />
+      </Container>
     );
   }
 
   return (
-    <>
+    <Box key={taskId}>
       <CreateChecklist taskId={taskId} boardId={boardId} />
       <List>
         {checklists && checklists.length > 0 ? (
@@ -44,7 +45,7 @@ const ShowChecklists = ({
           </Typography>
         )}
       </List>
-    </>
+    </Box>
   );
 };
 
