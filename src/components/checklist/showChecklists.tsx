@@ -50,3 +50,6 @@ const ShowChecklists = ({
 };
 
 export default ShowChecklists;
+
+export const dynamic = "force-dynamic";
+
