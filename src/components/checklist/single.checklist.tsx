@@ -143,8 +143,7 @@ const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
           />
         </ListItemIcon>
         <ListItemText sx={{ ml: -2 }}>
-          <form onSubmit={formik.handleSubmit}>
-            <TextField
+          <TextField
               id="checklist-content"
               variant="outlined"
               size="small"
@@ -190,7 +189,6 @@ const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
                 },
               }}
             />
-          </form>
         </ListItemText>
       </ListItem>
       {openDeleteDialog && (

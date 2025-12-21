@@ -78,10 +78,6 @@ const EditListDialog = ({
   useEffect(() => {
     if (isSuccess) {
       handleDialogClose();
-      setNotification({
-        message: "List edited successfully",
-        messageType: "success",
-      });
     }
 
     if (isError) {

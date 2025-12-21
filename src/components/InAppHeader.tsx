@@ -107,6 +107,7 @@ const InAppHeader = ({
                 justifyContent: "center",
                 flexDirection: "row",
               }}
+              suppressHydrationWarning
             >
               <Link href={"/"}>
                 <Image

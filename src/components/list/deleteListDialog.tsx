@@ -46,20 +46,13 @@ const DeleteBListDialog = ({
   });
 
   useEffect(() => {
-    if (mutation.isSuccess) {
-      setNotification({
-        message: "List deleted successfully",
-        messageType: "success",
-      });
-    }
-
     if (mutation.isError) {
       setNotification({
         message: `${mutation.error}`,
         messageType: "error",
       });
     }
-  }, [mutation.isSuccess, mutation.isError, mutation.error]);
+  }, [mutation.isError, mutation.error]);
 
   const handleDelete = async () => {
     try {
