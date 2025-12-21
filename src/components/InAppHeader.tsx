@@ -83,12 +83,8 @@ const InAppHeader = ({
           }}
         >
           {/* Left Cluster: Back Arrow */}
-          {backView && backRoute && (
-            <Box
-              aria-label="Nerdy logo"
-              component={Link}
-              href={backRoute || "#"}
-            >
+          {backView && typeof backRoute === "string" && (
+            <Box aria-label="Nerdy logo" component={Link} href={backRoute}>
               <IconButton
                 size="large"
                 edge="start"

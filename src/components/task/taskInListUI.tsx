@@ -71,7 +71,7 @@ const TaskInListUI = ({
         {...listeners}
       >
         <Link
-          href={`/my-task/${taskId}/list/${listId}`}
+          href={`/my-task/${taskId}/list/${listId}?bId=${boardId}`}
           onClick={handleNavigation}
           style={{ textDecoration: "none", flexGrow: 1 }}
         >

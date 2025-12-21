@@ -38,13 +38,9 @@ const RemoveMemberDialog = ({
     mutationKey: ["board-member", `board-member:${boardId}`],
     mutationFn: async (values: RemoveBoardMemberInputType) =>
       await RemoveBoardMemberServerAction(values),
-    onSuccess: async (result) => {
+    onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["board-member", `board-member:${boardId}`],
-      });
-      setNotification({
-        message: result,
-        messageType: "success",
       });
       handleCloseDialog();
     },

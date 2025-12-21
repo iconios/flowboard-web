@@ -51,10 +51,6 @@ const DeleteCommentDialog = ({
       await queryClient.invalidateQueries({
         queryKey: ["comments", `comments:${taskId}`],
       });
-      setNotification({
-        message: "Comment deleted successfully",
-        messageType: "success",
-      });
     },
     onError: () => {
       setNotification({

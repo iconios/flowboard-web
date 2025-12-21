@@ -1,3 +1,5 @@
+// Component for a single checklist item
+
 "use client";
 
 import { UpdateChecklistServerAction } from "@/actions/checklist.server.action";
@@ -16,24 +18,30 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Cancel, Edit, Save } from "@mui/icons-material";
+import { Cancel, Save } from "@mui/icons-material";
 import { FormikHelpers, useFormik } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
+import DeleteChecklist from "./delete.checklist";
 
 const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
   // Initialize all variables and constants
   const [checked, setChecked] = useState(checklist.checked);
+  const [content, setContent] = useState(checklist.content);
+  const [openDeleteDialog, setDeleteDialog] = useState(false);
   const [notification, setNotification] = useState<NotificationBarType | null>(
     null,
   );
 
-  const handleSaveContent = async (values: { content: string }, { setSubmitting }: FormikHelpers<{ content: string }>) => {
+  const handleSaveContent = async (
+    values: { content: string },
+    { setSubmitting }: FormikHelpers<{ content: string }>,
+  ) => {
     try {
       await mutation.mutateAsync({
-      checklistId: checklist.id,
-      taskId: checklist.taskId,
-      content: values.content,
-    });
+        checklistId: checklist.id,
+        taskId: checklist.taskId,
+        content: values.content,
+      });
     } catch (error) {
       console.error("Error saving checklist content:", error);
       setNotification({
@@ -47,7 +55,7 @@ const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
 
   const formik = useFormik({
     initialValues: {
-      content: checklist.content,
+      content,
     },
     validationSchema: toFormikValidationSchema(ContentSchema),
     enableReinitialize: true,
@@ -65,11 +73,8 @@ const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
     onSuccess: (result) => {
       if (result.checklist) {
         setChecked(result.checklist.checked);
-        if (result.checklist.content !== checklist.content) {
-          void formik.setValues({ content: result.checklist.content });
-          void formik.setTouched({ content: false });
-          formik.setErrors({});
-        }
+        setContent(result.checklist.content);
+        formik.resetForm({ values: { content: result.checklist.content } });
       }
     },
     onError: (error) => {
@@ -110,16 +115,18 @@ const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
         />
       )}
       <ListItem
+        sx={{ mb: -2, ml: 0, flex: 1, minWidth: 0 }}
         key={checklist.id}
         secondaryAction={
-          <>
-            <IconButton edge="end" aria-label="edit">
-              <Edit />
-            </IconButton>
-            <IconButton edge="end" aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-          </>
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => {
+              setDeleteDialog(true);
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
         }
       >
         <ListItemIcon>
@@ -135,50 +142,67 @@ const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
             onChange={handleCheckboxToggle}
           />
         </ListItemIcon>
-        <ListItemText>
-          <TextField
-            id="checklist-content"
-            variant="outlined"
-            size="small"
-            value={formik.values.content}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.content && Boolean(formik.errors.content)}
-            helperText={formik.touched.content && formik.errors.content}
-            slotProps={{
-              input: {
-                endAdornment: (
-                  <InputAdornment position="end">
-                    {isFieldDirty("content") && (
-                      <>
-                        <IconButton
-                          aria-label="save checklist content"
-                          edge="end"
-                          size="small"
-                          onClick={void handleSaveContent}
-                          disabled={!isFieldDirty("content")}
-                        >
-                          <Save fontSize="small" />
-                        </IconButton>
-                        <IconButton
-                          aria-label="cancel edit checklist content"
-                          edge="end"
-                          size="small"
-                          onClick={() => {
-                            resetField("content");
-                          }}
-                        >
-                          <Cancel fontSize="small" />
-                        </IconButton>
-                      </>
-                    )}
-                  </InputAdornment>
-                ),
-              },
-            }}
-          />
+        <ListItemText sx={{ ml: -2 }}>
+          <form onSubmit={formik.handleSubmit}>
+            <TextField
+              id="checklist-content"
+              variant="outlined"
+              size="small"
+              fullWidth
+              name="content"
+              value={formik.values.content}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.content && Boolean(formik.errors.content)}
+              helperText={formik.touched.content && formik.errors.content}
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {isFieldDirty("content") && (
+                        <>
+                          <IconButton
+                            aria-label="save checklist content"
+                            edge="end"
+                            size="small"
+                            onClick={() => {
+                              void formik.submitForm();
+                            }}
+                            disabled={!isFieldDirty("content")}
+                          >
+                            <Save fontSize="small" color="primary" />
+                          </IconButton>
+                          <IconButton
+                            aria-label="cancel edit checklist content"
+                            edge="end"
+                            size="small"
+                            onClick={() => {
+                              resetField("content");
+                            }}
+                          >
+                            <Cancel fontSize="small" color="error" />
+                          </IconButton>
+                        </>
+                      )}
+                    </InputAdornment>
+                  ),
+                  style: { fontSize: 16 },
+                },
+              }}
+            />
+          </form>
         </ListItemText>
       </ListItem>
+      {openDeleteDialog && (
+        <DeleteChecklist
+          dialogOpen={openDeleteDialog}
+          checklistId={checklist.id}
+          taskId={checklist.taskId}
+          onClose={() => {
+            setDeleteDialog(false);
+          }}
+        />
+      )}
     </>
   );
 };

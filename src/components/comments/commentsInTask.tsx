@@ -51,10 +51,6 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
       await queryClient.invalidateQueries({
         queryKey: ["comments", `comments:${taskId}`],
       });
-      setNotification({
-        message: "Comment created successfully",
-        messageType: "success",
-      });
       formik.resetForm();
     },
     onError: (error) => {
@@ -115,7 +111,7 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
         <Stack direction="column" spacing={1}>
           <TextField
             type="text"
-            label="Comments"
+            label="Add Comments"
             id="content"
             name="content"
             size="small"
@@ -124,7 +120,7 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
                 sx: bodyStyle,
               },
               input: {
-                sx: bodyStyle,
+                sx: { fontSize: 16, },
               },
             }}
             variant="outlined"
@@ -145,7 +141,7 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
               }}
               sx={{ mr: 2 }}
             >
-              Create
+              Create Comment
             </Button>
             <Button
               type="reset"
@@ -168,7 +164,9 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
         </Stack>
       </Box>
       {comments?.length === 0 ? (
-        <Typography variant="body2" sx={{ fontSize: 14 }}>No comments yet - create one!</Typography>
+        <Typography variant="body2" sx={{ fontSize: 14 }}>
+          No comments yet - create one!
+        </Typography>
       ) : (
         <List sx={{ width: "100%", maxWidth: 600 }}>
           {comments?.map((comment) => (

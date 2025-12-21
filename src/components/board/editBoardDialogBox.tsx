@@ -60,10 +60,6 @@ const EditBoardDialogBox = ({
       await queryClient.invalidateQueries({
         queryKey: ["board", user.email],
       });
-      setNotification({
-        message: "Board edited successfully",
-        messageType: "success",
-      });
     },
     onError: (error) => {
       setNotification({

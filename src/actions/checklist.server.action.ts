@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use server";
 
@@ -18,7 +18,7 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { ZodError } from "zod";
 
-const SERVER_BASE_URL = process.env.SERVER_BASE_URL!;
+const SERVER_BASE_URL = process.env.SERVER_BASE_URL;
 
 const validateServerUrlAndToken = (token: string) => {
   if (!SERVER_BASE_URL) {
@@ -41,7 +41,7 @@ const CreateChecklistServerAction = async (
     const { taskId, content, boardId } =
       CreateChecklistInputSchema.parse(createChecklistInput);
     const response = await fetch(
-      `${SERVER_BASE_URL}/api/v1/checklist/task/${taskId}/board/${boardId}`,
+      `${SERVER_BASE_URL}/checklist/task/${taskId}/board/${boardId}`,
       {
         method: "POST",
         headers: {
@@ -58,7 +58,7 @@ const CreateChecklistServerAction = async (
     }
 
     if (!result.success || !response.ok) {
-      throw new Error(result.message);
+      throw new Error(result.message || "Request failed");
     }
 
     revalidateTag("checklists");
@@ -85,7 +85,7 @@ const GetChecklistsServerAction = async (taskId: string) => {
 
   try {
     const response = await fetch(
-      `${SERVER_BASE_URL}/api/v1/checklist/task/${taskId}`,
+      `${SERVER_BASE_URL}/checklist/task/${taskId}`,
       {
         method: "GET",
         headers: {
@@ -104,7 +104,7 @@ const GetChecklistsServerAction = async (taskId: string) => {
     }
 
     if (!result.success || !response.ok) {
-      throw new Error(result.message);
+      throw new Error(result.message || "Request failed");
     }
 
     console.log("Checklists from server", result.data);
@@ -128,8 +128,13 @@ const UpdateChecklistServerAction = async (
   try {
     const { taskId, checklistId, ...updateBody } =
       UpdateChecklistInputSchema.parse(updateChecklistInput);
+    if (process.env.NODE_ENV === "development") {
+      console.log("Update body", updateBody);
+      console.log("Checklist ID", checklistId);
+      console.log("Task ID", taskId);
+    }
     const response = await fetch(
-      `${SERVER_BASE_URL}/api/v1/checklist/${checklistId}`,
+      `${SERVER_BASE_URL}/checklist/${checklistId}`,
       {
         method: "PATCH",
         headers: {
@@ -146,7 +151,7 @@ const UpdateChecklistServerAction = async (
     }
 
     if (!result.success || !response.ok) {
-      throw new Error(result.message);
+      throw new Error(result.message || "Request failed");
     }
 
     revalidateTag("checklists");
@@ -181,7 +186,7 @@ const DeleteChecklistServerAction = async (
     const { taskId, checklistId } =
       DeleteChecklistInputSchema.parse(deleteChecklistInput);
     const response = await fetch(
-      `${SERVER_BASE_URL}/api/v1/checklist/${checklistId}`,
+      `${SERVER_BASE_URL}/checklist/${checklistId}`,
       {
         method: "DELETE",
         headers: {
@@ -197,7 +202,7 @@ const DeleteChecklistServerAction = async (
     }
 
     if (!result.success || !response.ok) {
-      throw new Error(result.message);
+      throw new Error(result.message || "Request failed");
     }
 
     revalidateTag("checklists");

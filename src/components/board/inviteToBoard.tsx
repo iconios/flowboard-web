@@ -43,11 +43,7 @@ const InviteToBoard = ({
     mutationKey: ["board-member-invite"],
     mutationFn: (values: CreateBoardMemberInputType) =>
       CreateBoardMemberServerAction(values),
-    onSuccess: async (result) => {
-      setNotification({
-        message: result.message,
-        messageType: "success",
-      });
+    onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["board-member", `board-member:${boardId}`],
       });

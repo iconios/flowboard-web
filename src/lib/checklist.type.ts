@@ -163,7 +163,10 @@ export const ChecklistSchema = z.object({
 export type ChecklistType = z.infer<typeof ChecklistSchema>;
 
 export const ContentSchema = z.object({
-  content: z.string().max(255),
+  content: z
+    .string()
+    .min(1, "Content is required")
+    .max(255, "Content is too long"),
 });
 
 export type ContentType = z.infer<typeof ContentSchema>;

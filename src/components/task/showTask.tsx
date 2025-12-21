@@ -40,7 +40,15 @@ import { useUserContext } from "@/lib/user.context";
 import { useRouter } from "next/navigation";
 import ShowChecklists from "../checklist/showChecklists";
 
-const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
+const ShowTask = ({
+  taskId,
+  listId,
+  boardId,
+}: {
+  taskId: string;
+  listId: string;
+  boardId: string;
+}) => {
   const theme = useTheme();
   const [notification, setNotification] = useState<NotificationBarType | null>(
     null,
@@ -96,10 +104,6 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["task", `task:${listId}`],
-      });
-      setNotification({
-        message: "Task updated successfully",
-        messageType: "success",
       });
     },
     onError: () => {
@@ -360,7 +364,7 @@ const ShowTask = ({ taskId, listId }: { taskId: string; listId: string }) => {
               </Box>
             )}
 
-            <ShowChecklists taskId={taskId} />
+            <ShowChecklists taskId={taskId} boardId={boardId} />
             <CommentsInTask taskId={taskId} />
 
             <FormControl fullWidth>

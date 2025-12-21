@@ -47,10 +47,6 @@ const CommentContent = ({
       await queryClient.invalidateQueries({
         queryKey: ["comments", `comments:${comment.taskId}`],
       });
-      setNotification({
-        message: "Comment edited successfully",
-        messageType: "success",
-      });
     },
     onError: () => {
       setNotification({
