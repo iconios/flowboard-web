@@ -23,7 +23,7 @@ const ShowChecklists = ({
   const checklists = query.data;
 
   if (query.isLoading) {
-    return (      
+    return (
       <Container>
         <Skeleton variant="text" sx={{ fontSize: 32 }} />
         <Skeleton variant="text" sx={{ fontSize: 16 }} />
@@ -52,4 +52,3 @@ const ShowChecklists = ({
 export default ShowChecklists;
 
 export const dynamic = "force-dynamic";
-

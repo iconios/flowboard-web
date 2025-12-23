@@ -47,10 +47,6 @@ const DeleteTaskDialog = ({
       await queryClient.invalidateQueries({
         queryKey: ["list", `list:${boardId}`],
       });
-      setNotification({
-        message: "Task deleted successfully",
-        messageType: "success",
-      });
       handleDialogClose();
     },
     onError: () => {

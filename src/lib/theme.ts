@@ -42,19 +42,19 @@ const typography = {
     fontSize: "57px",
     lineHeight: "64px",
     letterSpacing: "-0.25px",
-    fontWeight: 400,
+    fontWeight: 900,
   },
   displayMedium: {
     fontSize: "45px",
     lineHeight: "52px",
     letterSpacing: "0px",
-    fontWeight: 400,
+    fontWeight: 700,
   },
   displaySmall: {
     fontSize: "36px",
     lineHeight: "44px",
     letterSpacing: "0px",
-    fontWeight: 400,
+    fontWeight: 600,
   },
   headlineLarge: {
     fontSize: "32px",

@@ -50,13 +50,11 @@ const InAppHeader = ({
   };
 
   const handleLogin = () => {
-    console.log("Login clicked");
     handleMenuClose();
     router.push("/welcome");
   };
 
   const handleLogout = () => {
-    console.log("Logout clicked");
     handleMenuClose();
     LogOut();
   };

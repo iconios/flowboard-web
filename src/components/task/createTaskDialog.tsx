@@ -77,10 +77,6 @@ const CreateTaskDialog = ({
       await queryClient.invalidateQueries({
         queryKey: ["list", `list:${boardId}`],
       });
-      setNotification({
-        message: "Task created successfully",
-        messageType: "success",
-      });
       formik.resetForm();
       handleDialogClose();
     },

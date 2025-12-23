@@ -1,5 +1,3 @@
- 
- 
 // Component for deleting a checklist
 
 "use client";
@@ -61,8 +59,8 @@ const DeleteChecklist = ({
   });
 
   const handleDelete = () => {
-      console.log("Task Id:", taskId);
-      mutation.mutate({ checklistId, taskId });
+    console.log("Task Id:", taskId);
+    mutation.mutate({ checklistId, taskId });
   };
 
   return (
@@ -82,7 +80,9 @@ const DeleteChecklist = ({
         slotProps={{
           backdrop: {
             onClick: mutation.isPending
-              ? (e: SyntheticEvent) => { e.stopPropagation(); }
+              ? (e: SyntheticEvent) => {
+                  e.stopPropagation();
+                }
               : undefined,
           },
         }}

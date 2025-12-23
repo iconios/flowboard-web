@@ -144,51 +144,51 @@ const SingleChecklist = ({ checklist }: { checklist: ChecklistType }) => {
         </ListItemIcon>
         <ListItemText sx={{ ml: -2 }}>
           <TextField
-              id="checklist-content"
-              variant="outlined"
-              size="small"
-              fullWidth
-              name="content"
-              value={formik.values.content}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.content && Boolean(formik.errors.content)}
-              helperText={formik.touched.content && formik.errors.content}
-              slotProps={{
-                input: {
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      {isFieldDirty("content") && (
-                        <>
-                          <IconButton
-                            aria-label="save checklist content"
-                            edge="end"
-                            size="small"
-                            onClick={() => {
-                              void formik.submitForm();
-                            }}
-                            disabled={!isFieldDirty("content")}
-                          >
-                            <Save fontSize="small" color="primary" />
-                          </IconButton>
-                          <IconButton
-                            aria-label="cancel edit checklist content"
-                            edge="end"
-                            size="small"
-                            onClick={() => {
-                              resetField("content");
-                            }}
-                          >
-                            <Cancel fontSize="small" color="error" />
-                          </IconButton>
-                        </>
-                      )}
-                    </InputAdornment>
-                  ),
-                  style: { fontSize: 16 },
-                },
-              }}
-            />
+            id="checklist-content"
+            variant="outlined"
+            size="small"
+            fullWidth
+            name="content"
+            value={formik.values.content}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.content && Boolean(formik.errors.content)}
+            helperText={formik.touched.content && formik.errors.content}
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {isFieldDirty("content") && (
+                      <>
+                        <IconButton
+                          aria-label="save checklist content"
+                          edge="end"
+                          size="small"
+                          onClick={() => {
+                            void formik.submitForm();
+                          }}
+                          disabled={!isFieldDirty("content")}
+                        >
+                          <Save fontSize="small" color="primary" />
+                        </IconButton>
+                        <IconButton
+                          aria-label="cancel edit checklist content"
+                          edge="end"
+                          size="small"
+                          onClick={() => {
+                            resetField("content");
+                          }}
+                        >
+                          <Cancel fontSize="small" color="error" />
+                        </IconButton>
+                      </>
+                    )}
+                  </InputAdornment>
+                ),
+                style: { fontSize: 16 },
+              },
+            }}
+          />
         </ListItemText>
       </ListItem>
       {openDeleteDialog && (

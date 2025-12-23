@@ -86,10 +86,13 @@ export const DeleteCommentInputSchema = z.object({
 export type DeleteCommentInputType = z.infer<typeof DeleteCommentInputSchema>;
 
 export const CommentContentSchema = z.object({
-  content: z.preprocess((val) => val ?? "", z
-    .string()
-    .max(100, "100 characters is the maximum allowed")
-    .min(2, "2 characters is the minimum allowed"),)
+  content: z.preprocess(
+    (val) => val ?? "",
+    z
+      .string()
+      .max(100, "100 characters is the maximum allowed")
+      .min(2, "2 characters is the minimum allowed"),
+  ),
 });
 
 export type CommentContentType = z.infer<typeof CommentContentSchema>;

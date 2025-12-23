@@ -120,7 +120,7 @@ const CommentsInTask = ({ taskId }: { taskId: string }) => {
                 sx: bodyStyle,
               },
               input: {
-                sx: { fontSize: 16, },
+                sx: { fontSize: 16 },
               },
             }}
             variant="outlined"
