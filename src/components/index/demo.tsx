@@ -14,7 +14,7 @@ const Demo = () => {
   return (
     <>
       {/* Demo Section */}
-      <Box sx={{ py: 4, position: "relative", overflow: "hidden" }}>
+      <Box sx={{ py: 15, position: "relative", overflow: "hidden" }}>
         <Box
           sx={{
             position: "absolute",

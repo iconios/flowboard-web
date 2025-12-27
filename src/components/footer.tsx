@@ -16,6 +16,7 @@ const Footer = ({ xs, sm, md }: { xs: string; sm: string; md: string }) => {
         position: "fixed",
         bottom: 0,
         width: { xs, sm, md },
+        zIndex: 1300,
       }}
     >
       <Container maxWidth="xl">
