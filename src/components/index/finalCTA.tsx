@@ -7,7 +7,7 @@ const FinalCTA = () => {
   return (
     <>
       {/* Final CTA Section */}
-      <Box sx={{ py: 15, position: "relative", overflow: "hidden" }}>
+      <Box sx={{ pt: 15, pb: { xs: 25, sm: 15}, position: "relative", overflow: "hidden" }}>
         <Box
           sx={{
             position: "absolute",
